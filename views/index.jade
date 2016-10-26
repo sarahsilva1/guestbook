@@ -3,7 +3,7 @@ extends layout
 
 block content
     h1.
-     Welcome to my guestbook!
+     Sign my guestbook below
     form#formAddUser(name="adduser", method = "post", action="/adduser")
       input.form-group#inputUserName(type="test", placeholder="username", name="username" required)
       input.form-group#inputUserEmail(type="email", placeholder="useremail", name="useremail" required)
@@ -11,7 +11,7 @@ block content
       button.btn.btn-default#btnSubmmit(type="submit")  submit
 
     table.table.table-hover
-     thead
+     thead.guestbook_title
       tr
        td Name
        td Email
@@ -25,4 +25,4 @@ block content
         td #{user.email}
         td #{user.comment}
         td
-         a.btn.btn-danger(href="#{user._id}") Delete
+         a.btn.btn-secondary(href="#{user._id}") Delete
