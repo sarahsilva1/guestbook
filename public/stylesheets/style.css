@@ -8,6 +8,46 @@ body {
   margin-right:auto;
 }
 
+h1{
+  text-align: center;
+}
+
+textarea{
+  width: 80%;
+  min-width: 100px;
+}
+
+
+.tablestyle{
+  background: white;
+}
+
+.userLabel{
+    width: 120px;
+    margin-right: 10px;
+  }
+
+.emailLabel{
+      width: 200px;
+      margin-left: 20px;
+      margin-right: 10px;
+  }
+
+.messageLabel{
+      width: 200px;
+      margin-right: 10px;
+      position: relative;
+      bottom: 35px;
+  }
+
+form{
+  /*background: white;*/
+  padding-bottom: 20px;
+  margin-left: 5%;
+  margin-right:5%;
+  width:90%;
+  text-align: center;
+}
 
 a {
   color: #00B7FF;

@@ -56,7 +56,7 @@ router.post('/adduser', function(req,res){
 		}
 		else{
 			//ad forward to sucess page
-			res.redirect("/");
+			res.redirect("/guestbook");
 		}
 	});
 });
@@ -65,12 +65,11 @@ router.post('/adduser', function(req,res){
 router.get('/:id', function(req,res){
 	var id = req.params.id;
 	var objectId = new ObjectID(id);
-
 	var db = req.db;
 	var collection = db.get('usercollection');
 	console.log(collection);
 	collection.remove({_id: objectId});
-	res.redirect('/');
+	res.redirect('/guestbook');
 
 });
 
