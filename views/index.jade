@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    h1.
+     Sign our guestbook!
+    form#formAddUser(name="adduser", method = "post", action="/adduser")
+      input.form-group#inputUserName(type="test", placeholder="Name", name="username")
+      input.form-group#inputUserEmail(type="test", placeholder="Email", name="useremail")
+      input.form-group#inputUserComment(type="test", placeholder="Comment", name="usercomment")
+      button.btn.btn-default#btnSubmmit(type="submit")  submit
+
+    table.table.table-striped
+     thead
+      tr
+       td Name
+       td Email
+       td Comments
+       td
+     tbody
+      each user, i in userlist
+       tr
+        td(href="mailto:#{user.email}")= user.username
+        td #{user.email}
+        td #{user.comment}
+        td
+         a.btn.btn-danger(href="#{user._id}") Delete
