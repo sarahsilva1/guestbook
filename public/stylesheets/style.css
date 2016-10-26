@@ -2,9 +2,15 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #DAEBEE !important;
+  @extend %flex;
+  @include dimensions($width:100%);
 }
 
 a {
+  color: #00B7FF;
+}
+
+thead {
   color: #00B7FF;
 }
 
@@ -14,29 +20,13 @@ a {
 
 /*transparent button below*/
 
-$buttonColor: #FF5126;
-$backgroundColor: #DAEBEE;
+$buttonColor: #DAEBEE;
+$backgroundColor: #FF5126;
 
 @mixin dimensions($width: null, $height: $width) { width: $width; height: $height; }
 %reset { margin: 0; padding: 0; }
 %flex { display: flex; justify-content: center;	align-items: center; }
-*, *:before, *:after { box-sizing: border-box; }
-
-html,
-body {
-	@include dimensions($width: 100%);
-	@extend %reset;
-	font-family: 'Assistant', sans-serif;
-}
-
-body {
-	@extend %reset;
-	@extend %flex;
-	@include dimensions($width:100%);
-	overflow: hidden;
-	background: $backgroundColor;
-	background-size: 20px 20px;
-}
+/**, *:before, *:after { box-sizing: border-box; }*/
 
 button[type="submit"] {
 	@extend %flex;
@@ -44,27 +34,23 @@ button[type="submit"] {
 	background: transparent;
 	border-radius: 10px;
 	will-change: transform;
-	transition: all .2s ease;
+	transition: all .3s ease;
 	border: 2px solid $buttonColor;
-	cursor: pointer;
+	/*cursor: pointer;*/
 	color: #ffffff;
 	font-size: 16px;
 	color: $buttonColor;
 	outline: none;
 	text-align: center;
+}
 
-	&:hover {
+	button[type="submit"]:hover {
 		background: $buttonColor;
 		color: #ffffff;
 	}
-	// &:active {
-	// 	font-size: 15px;
-	// 	transform: translateY(1px);
-	// }
-	&.active {
-		font-size: 0;
-		border-radius: 25px;
-		width: 50px;
-		background: transparent;
-	}
-}
+
+  /*a.btn.btn-danger:hover {
+    background: transparent;
+		color: #ffffff;
+    font-color: #000000;
+  }*/
