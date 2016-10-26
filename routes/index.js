@@ -3,8 +3,8 @@ var ObjectID = require('mongodb').ObjectID;
 var router = express.Router();
 
 
-/* GET Userlist page. */
-router.get('/', function(req, res) {
+/* GET guestlist page. */
+router.get('/guestbook', function(req, res) {
     var db = req.db;
     var collection = db.get('usercollection');
     collection.find({},{},function(e,docs){
@@ -18,6 +18,17 @@ router.get('/', function(req, res) {
 router.get('/newuser',function(req,res){
 	res.render('newuser',{ title:'Add New User'});
 })
+
+/* GET single_view Page*/
+router.get('/single_view',function(req,res){
+	res.render('single_view',{ title:'Single User View'});
+})
+
+/* GET test Page*/
+router.get('/',function(req,res){
+	res.render('home',{ title:'Home Page'});
+})
+
 
 /* POST to Add User Service */
 router.post('/adduser', function(req,res){
@@ -61,8 +72,33 @@ router.get('/:id', function(req,res){
 	collection.remove({_id: objectId});
 	res.redirect('/');
 
-
 });
 
+// this is what I was missing
+
+router.get('/:id/usermessage', function(req,res){
+	var id = req.params.id;
+	var objectId = new ObjectID(id);
+
+	var db = req.db;
+	var collection = db.get('usercollection');
+	console.log(collection);
+	collection.find({_id: objectId}, function(err, result){
+
+		if(err){
+			res.send("there was an error");
+		}
+		else{
+		res.render('message', {
+				"usermessage" : result
+			});
+		//res.json(result);
+		}
+	});
+});
+
+// I had this
 
 module.exports = router;
+
+// anchor href id={user}

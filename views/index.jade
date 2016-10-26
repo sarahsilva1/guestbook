@@ -1,15 +1,16 @@
+
 extends layout
 
 block content
     h1.
-     Sign our guestbook!
+     Welcome to my guestbook!
     form#formAddUser(name="adduser", method = "post", action="/adduser")
-      input.form-group#inputUserName(type="test", placeholder="Name", name="username")
-      input.form-group#inputUserEmail(type="test", placeholder="Email", name="useremail")
-      input.form-group#inputUserComment(type="test", placeholder="Comment", name="usercomment")
+      input.form-group#inputUserName(type="test", placeholder="username", name="username" required)
+      input.form-group#inputUserEmail(type="email", placeholder="useremail", name="useremail" required)
+      input.form-group#inputUserComment(type="test", placeholder="usercomment", name="usercomment" required)
       button.btn.btn-default#btnSubmmit(type="submit")  submit
 
-    table.table.table-striped
+    table.table.table-hover
      thead
       tr
        td Name
@@ -19,7 +20,8 @@ block content
      tbody
       each user, i in userlist
        tr
-        td(href="mailto:#{user.email}")= user.username
+        td
+         a(href="#{user._id}/usermessage")= user.username
         td #{user.email}
         td #{user.comment}
         td
